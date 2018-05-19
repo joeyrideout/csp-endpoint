@@ -1,15 +1,41 @@
 #!/usr/bin/env node
 
 'use strict';
+var endpoint = {
+  parser: function(req, res, next) {
+    if (req.get('Content-Type') === 'application/csp-report') {
+        var data='';
+        req.setEncoding('utf8');
+        req.on('data', function(chunk) {
+           data += chunk;
+        });
 
-var endpoint = require('../index');
+        req.on('end', function() {
+            req.report = data;
+            next();
+        });
+    } else {
+        next();
+    }
+  },
+
+  classify: function() {
+    //return inline, evil, mixed-content, blocked-host etc
+  },
+
+  sanitize: function() {
+    // query strings, paths, etc
+  }
+};
+
+// var endpoint = require('../index');
 var express = require('express');
 var app = express();
 app.use(endpoint.parser);
 
 var opts = {
   "port": 3000,
-  "path": "/",
+  "path": "/"
 }
 
 app.post(opts.path, function(req, res){
