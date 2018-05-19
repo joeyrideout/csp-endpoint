@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
 'use strict';
+
+var express = require('express');
+var xss = require('xss-clean');
+
 var endpoint = {
   parser: function(req, res, next) {
     if (req.get('Content-Type') === 'application/csp-report') {
@@ -29,9 +33,9 @@ var endpoint = {
 };
 
 // var endpoint = require('../index');
-var express = require('express');
 var app = express();
 app.use(endpoint.parser);
+app.use(xss());
 
 var opts = {
   "port": 3000,
