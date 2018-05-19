@@ -21,4 +21,4 @@ pm2 save
 
 ## Usage
 
-Logs are available in `[HOME]/.pm2/logs/
+Logs are available in `[HOME]/.pm2/logs/`
