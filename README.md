@@ -16,10 +16,11 @@ pm2-startup install
 pm2 start csp-endpoint.js -i max
 pm2 save
 ```
+Note: Include `C:\PATH\TO\SCRIPT\csp-endpoint.js` if not in current directory.
 
 ## Integration
 
-Logs are available in `[HOME]/.pm2/logs/`
+Logs are available in `C:\Users\[USER]\.pm2\logs\`
 
 
 ### License
