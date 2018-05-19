@@ -18,3 +18,7 @@ pm2-startup install
 pm2 start csp-endpoint.js -i 0
 pm2 save
 ```
+
+## Usage
+
+Logs are available in `[HOME]/.pm2/logs/
