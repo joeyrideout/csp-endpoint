@@ -22,6 +22,9 @@ Note: Include `C:\PATH\TO\SCRIPT\csp-endpoint.js` if not in current directory.
 
 Logs are available in `C:\Users\[USER]\.pm2\logs\`
 
+## Future
+
+Automatic log rotation can be enabled as soon as [this issue for PM2 on Windows](https://github.com/Unitech/pm2/issues/3456) is released; current fix is "pending release".
 
 ### License
 ISC
