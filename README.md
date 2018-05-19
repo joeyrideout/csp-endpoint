@@ -4,7 +4,7 @@ This is a streamlined version of [csp-endpoint](https://github.com/c0nrad/csp-en
 
 ## Setup
 
-1. Save [csp-endpoint.js](https://raw.githubusercontent.com/joeyrideout/csp-endpoint/master/csp-endpoint.js)
+1. Save [csp-endpoint.js](https://raw.githubusercontent.com/joeyrideout/csp-endpoint/master/csp-endpoint.js) (Right-click, Save-As)
 2. Install [Node for Windows](https://nodejs.org/en/download/)
 3. Open PowerShell. Install pm2, express, and pm2-windows-startup:
 ```
