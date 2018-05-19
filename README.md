@@ -1,6 +1,6 @@
 ## Windows CSP violation report endpoint
 
-A streamlined (~50 line) version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint). This version is meant to run on any Windows machine in a robust manner by the [PM2 Node.js process manager](http://pm2.keymetrics.io/) with minimal setup time, automatic upkeep, DoS protection, and logging.
+A streamlined (~50 line) version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint). This version is meant to be run on any Windows machine in a robust manner by the [PM2 Node.js process manager](http://pm2.keymetrics.io/) with minimal setup time, automatic upkeep, DoS protection, and logging.
 
 ## Setup
 
