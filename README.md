@@ -1,49 +1,27 @@
 # csp-endpoint
 
-Endpoint for collecting CSP violation reports.
+Windows CSP violation report endpoint
+
+This is a streamlined version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint) meant to be run in a robust manner by the PM2 Node.js process manager.
 
 ## Usage
 
-```
-$ csp-endpoint --port 3000 --path '/'
-Listening on http://host:3000/
-{"csp-report":{"document-uri":"https://catfactspammer.com/","referrer":"",...}
-{"csp-report":{"document-uri":"https://catfactspammer.com/","referrer":"",...}
-{"csp-report":{"document-uri":"https://catfactspammer.com/","referrer":"",...}
-```
-
-Options:
-```
-➜  csp-endpoint git:(master) ✗ csp-endpoint --help
-
-Usage: node csp-endpoint.js [options]
-
-Options:
-   --path   The path of the endpoint to collect reports on  [/]
-   --port   The port of the endpoint to collect reports on  [3000]
-
-Documentation can be found at Https://github.com/c0nrad/csp-endpoint
-```
 
 ## Installation
 
+1. Save [csp-endpoint.js](https://raw.githubusercontent.com/joeyrideout/csp-endpoint/master/bin/csp-endpoint.js)
+2. Install [Node for Windows](https://nodejs.org/en/download/)
+3. Open PowerShell, and install pm2 and express:
 ```
-npm install -g csp-endpoint
+npm install -g pm2 express
 ```
-
-## Express middleware
-
-Express doesn't parse applicaiton/csp-report, so to help express use this middleware:
-```javascript
-var csp = require('csp-endpoint');
-var express = require('express');
-var app = express();
-app.use(csp.parser);
-...
+4. Have the endpoint recover after a reboot:
 ```
-
-## Future
-- classification
-
-## Contact
-Stuart Larsen c0nrad.io <c0nrad@c0nrad.io>
+npm install pm2-windows-startup -g
+pm2-startup install
+```
+5. Start a cluster of csp-endpoint processes (omit "-i 0" for a single process) and save them for startup on reboot:
+```
+pm2 start csp-endpoint.js -i 0
+pm2 save
+```
