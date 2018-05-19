@@ -17,7 +17,7 @@ pm2 start csp-endpoint.js -i 0
 pm2 save
 ```
 
-## Usage
+## Integration
 
 Logs are available in `[HOME]/.pm2/logs/`
 
