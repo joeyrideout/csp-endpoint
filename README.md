@@ -1,6 +1,6 @@
 ## Windows CSP violation report endpoint
 
-This is a streamlined version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint) meant to be run in a robust manner by the PM2 Node.js process manager with minimal setup time and upkeep on any Windows machine.
+This is a streamlined version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint) meant to be run in a robust manner by the PM2 Node.js process manager with minimal setup time and automatic upkeep on any Windows machine.
 
 ## Setup
 
