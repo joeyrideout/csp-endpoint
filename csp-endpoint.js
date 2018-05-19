@@ -3,7 +3,6 @@
 'use strict';
 
 var express = require('express');
-var xss = require('xss-clean');
 
 var endpoint = {
   parser: function(req, res, next) {
@@ -35,7 +34,6 @@ var endpoint = {
 // var endpoint = require('../index');
 var app = express();
 app.use(endpoint.parser);
-app.use(xss());
 
 var opts = {
   "port": 3000,
@@ -43,18 +41,13 @@ var opts = {
 }
 
 app.post(opts.path, function(req, res){
-  var report = JSON.parse(req.report);
-/*if (opts.time) {
-    report.ts = new Date();
-  }
-  if (opts.headers) {
-    report.headers = JSON.stringify(req.headers);
-  }
-  if (opts.ip) {
-    report.ip = req.ip;
-  }*/
-  console.log(JSON.stringify(report));
-  res.send('Thanks!');
+  try {
+      var report = JSON.parse(req.report);
+      console.log(JSON.stringify(report));
+      res.send('Thanks!');
+    } catch(ex){
+    }
+  
 });
 
 console.log('Listening on http://host:' + opts.port + opts.path);
