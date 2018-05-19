@@ -11,9 +11,9 @@ This is a streamlined version of [csp-endpoint](https://github.com/c0nrad/csp-en
 npm install -g pm2 express pm2-windows-startup
 pm2-startup install
 ```
-4. Start a cluster of csp-endpoint processes (omit `-i 0` for a single process) and save them for startup on reboot:
+4. Start a cluster of csp-endpoint processes (change `max` to `1` for a single process, etc.) and save them for startup on reboot:
 ```
-pm2 start csp-endpoint.js -i 0
+pm2 start csp-endpoint.js -i max
 pm2 save
 ```
 
