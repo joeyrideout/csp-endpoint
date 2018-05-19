@@ -2,7 +2,12 @@
 
 'use strict';
 
+var opts = {
+  "port": 3000,
+  "path": "/"
+};
 var express = require('express');
+var Ddos = require('ddos');
 
 var endpoint = {
   parser: function(req, res, next) {
@@ -20,35 +25,25 @@ var endpoint = {
     } else {
         next();
     }
-  },
-
-  classify: function() {
-    //return inline, evil, mixed-content, blocked-host etc
-  },
-
-  sanitize: function() {
-    // query strings, paths, etc
   }
 };
 
-// var endpoint = require('../index');
+var ddos = new Ddos({burst:10, limit:15});
 var app = express();
+app.use(ddos.express);
 app.use(endpoint.parser);
-
-var opts = {
-  "port": 3000,
-  "path": "/"
-}
 
 app.post(opts.path, function(req, res){
   try {
-      var report = JSON.parse(req.report);
-      console.log(JSON.stringify(report));
-      res.send('Thanks!');
-    } catch(ex){
-    }
+    var report = JSON.parse(req.report);
+    console.log(JSON.stringify(report));
+    res.send('ok');
+  } catch(ex){
+  }
   
 });
 
-console.log('Listening on http://host:' + opts.port + opts.path);
+console.log(JSON.stringify([{
+  "listening": "http://localhost:" + opts.port + opts.path
+}]));
 app.listen(opts.port);
