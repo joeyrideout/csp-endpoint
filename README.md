@@ -10,11 +10,11 @@ A streamlined (~50 line) version of [csp-endpoint](https://github.com/c0nrad/csp
 ```
 npm install -g express ddos pm2
 ```
-3. Generate startup installation command, then run it as directed:
+4. Generate startup installation command, then run it as directed:
 ```
 pm2 startup
 ```
-4. Start a cluster of csp-endpoint processes (change `max` to `1` for a single process, etc.) and save them for startup on reboot:
+5. Start a cluster of csp-endpoint processes (change `max` to `1` for a single process, etc.) and save them for startup on reboot:
 ```
 pm2 start /PATH/TO/csp-endpoint.js -i max
 pm2 save
