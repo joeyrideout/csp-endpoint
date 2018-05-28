@@ -1,11 +1,29 @@
-## Windows CSP violation report endpoint
+## Node CSP violation report endpoint
 
-A streamlined (~50 line) version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint). This version is meant to be run on any Windows machine in a robust manner by the [PM2 Node.js process manager](http://pm2.keymetrics.io/) and features minimal setup time, scaleability, automatic upkeep, DoS protection, and logging.
+A streamlined (~50 line) version of [csp-endpoint](https://github.com/c0nrad/csp-endpoint). This version is meant to be run in a cross-platform and robust manner by the [PM2 Node.js process manager](http://pm2.keymetrics.io/) and features minimal setup time, scaleability, automatic upkeep, DoS protection, and logging.
 
-## Setup
+## Setup (Linux)
 
 1. Save [csp-endpoint.js](https://raw.githubusercontent.com/joeyrideout/csp-endpoint/master/csp-endpoint.js) (Right-click, Save link as...)
-2. Install [Node for Windows](https://nodejs.org/en/download/)
+2. [Install Node](https://nodejs.org/en/download/)
+3. Open Terminal and install packages:
+```
+npm install -g express ddos pm2
+```
+3. Generate startup installation command, then run it as directed:
+```
+pm2 startup
+```
+4. Start a cluster of csp-endpoint processes (change `max` to `1` for a single process, etc.) and save them for startup on reboot:
+```
+pm2 start /PATH/TO/csp-endpoint.js -i max
+pm2 save
+```
+
+## Setup (Windows)
+
+1. Save [csp-endpoint.js](https://raw.githubusercontent.com/joeyrideout/csp-endpoint/master/csp-endpoint.js) (Right-click, Save link as...)
+2. [Install Node](https://nodejs.org/en/download/)
 3. Open PowerShell and install packages:
 ```
 npm install -g express ddos pm2 pm2-windows-startup
@@ -13,18 +31,17 @@ pm2-startup install
 ```
 4. Start a cluster of csp-endpoint processes (change `max` to `1` for a single process, etc.) and save them for startup on reboot:
 ```
-pm2 start csp-endpoint.js -i max
+pm2 start C:\PATH\TO\csp-endpoint.js -i max
 pm2 save
 ```
-Note: Include `C:\PATH\TO\SCRIPT\csp-endpoint.js` if not in current directory.
 
 ## Integration
 
-Logs are available in `C:\Users\[USER]\.pm2\logs\`
+Logs are available in `[HOMEDIR]\.pm2\logs\`
 
-## Future
+## Known Issues
 
-Automatic log rotation can be enabled as soon as [this issue for PM2 on Windows](https://github.com/Unitech/pm2/issues/3456) is released; current fix is "pending release".
+Automatic log rotation is supported for Linux but can't be enabled on Windows until [this issue](https://github.com/Unitech/pm2/issues/3456) is released; current fix is "pending release".
 
 ### License
 ISC
